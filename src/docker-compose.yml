@@ -1,0 +1,12 @@
+version: "3.0"
+services:
+  mssql:
+    image: microsoft/mssql-server-linux:latest
+    container_name: placessql
+    ports:
+      - 1433:1433
+    # bash will be executed from that path, our scripts folder
+    working_dir: /usr/src/app
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: P@55w0rd
