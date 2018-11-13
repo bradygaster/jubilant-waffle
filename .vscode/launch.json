@@ -9,7 +9,7 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/Places.Data/Seed/bin/Debug/netcoreapp2.2/Seed.dll",
+            "program": "${workspaceFolder}/src/Places.Data.Seed/Places.Data.Seed.dll",
             "args": [],
             "cwd": "${workspaceFolder}",
             "console": "internalConsole",

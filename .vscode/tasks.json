@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/Places.Data/Seed/Seed.csproj"
+                "${workspaceFolder}/src/Places.Data.Seed/Places.Data.Seed.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
