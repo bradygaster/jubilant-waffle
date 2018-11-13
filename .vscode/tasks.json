@@ -7,7 +7,33 @@
             "type": "process",
             "args": [
                 "build",
+                "${workspaceFolder}/src/Places.Api/Places.Api.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn" : [
+                "build-seed"
+            ]
+        },
+        {
+            "label": "build-seed",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
                 "${workspaceFolder}/src/Places.Data.Seed/Places.Data.Seed.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn" : [
+                "build-data"
+            ]
+        },
+        {
+            "label": "build-data",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/Places.Data/Places.Data.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
