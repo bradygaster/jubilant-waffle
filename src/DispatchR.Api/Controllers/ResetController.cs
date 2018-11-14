@@ -37,6 +37,7 @@ namespace DispatchR.Api.Controllers
                     Console.WriteLine($"{place.Name}: {place.Latitude} x {place.Longitude}");
 
                     places.Add(new Place {
+                        Status = place.Status,
                         Name = place.Name,
                         Id = Guid.NewGuid(),
                         Location = new Point((double)place.Longitude, 

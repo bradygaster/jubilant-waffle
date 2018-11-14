@@ -12,7 +12,8 @@ namespace DispatchR.Api.Models
                 Id = x.Id,
                 Name = x.Name,
                 Latitude = x.Location.Y,
-                Longitude = x.Location.X
+                Longitude = x.Location.X,
+                Status = x.Status
             };
         }
     }
@@ -23,5 +24,6 @@ namespace DispatchR.Api.Models
         public Guid Id { get; set; }
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+        public string Status { get; set; }
     }
 }

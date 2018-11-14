@@ -3,35 +3,42 @@
         "Name": "Building 50",
         "Latitude": 47.64688594275095,
         "Longitude": -122.13304241271973,
+        "Status": "New"
     },
     {
         "Name": "Microsoft Studios A",
         "Latitude": 47.64536804194798,
-        "Longitude": -122.1364756402588
+        "Longitude": -122.1364756402588,
+        "Status": "Requested"
     },
     {
         "Name": "Microsoft Studios D",
         "Latitude": 47.64332964862482,
-        "Longitude": -122.13542421432496
+        "Longitude": -122.13542421432496,
+        "Status": "In Route"
     },
     {
         "Name": "Building 25",
         "Latitude": 47.64520902121605,
-        "Longitude": -122.13106830688477
+        "Longitude": -122.13106830688477,
+        "Status": "Arrived"
     },
     {
         "Name": "Building 34",
         "Latitude": 47.64415368954643,
-        "Longitude": -122.12568243118287
+        "Longitude": -122.12568243118287,
+        "Status": "New"
     },
     {
         "Name": "Building 16",
         "Latitude": 47.64382118337049, 
-        "Longitude": -122.12978084655762
+        "Longitude": -122.12978084655762,
+        "Status": "New"
     },
     {
         "Name": "Building 17",
         "Latitude": 47.643416390386605, 
-        "Longitude": -122.12761362167359
+        "Longitude": -122.12761362167359,
+        "Status": "New"
     }
 ]
