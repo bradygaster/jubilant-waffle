@@ -44,19 +44,6 @@
                 "${workspaceFolder}/src/DispatchR.Data/DispatchR.Data.csproj"
             ],
             "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "build-seed",
-            "command": "dotnet",
-            "type": "process",
-            "args": [
-                "build",
-                "${workspaceFolder}/src/DispatchR.Data.Seed/DispatchR.Data.Seed.csproj"
-            ],
-            "problemMatcher": "$msCompile",
-            "dependsOn" : [
-                "build-data"
-            ]
         }
     ]
 }
