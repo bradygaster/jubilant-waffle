@@ -35,12 +35,14 @@
                     }, { color: 'red'});
 
                     pushpin.metadata = {
-                        title: response.data[i].name
+                        title: response.data[i].name,
+                        placeId: response.data[i].id
                     };
 
                     Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) 
                     {
                         console.log(args.target);
+                        $('#place').data('placeId', args.target.metadata.placeId)
                         $('#exampleModalLabel').text(args.target.metadata.title);
                         $('#mapClickedModal').modal('toggle');
                     });
@@ -51,6 +53,10 @@
             .catch(function (error) {
                 console.log(error);
             });
+    }
+
+    function sendForHelp(e) {
+        console.log($(e).data('placeId'));
     }
 </script>
 }
@@ -78,11 +84,11 @@
         </button>
       </div>
       <div class="modal-body">
-        ...
+        Ask one of the mobile users for help in this location.
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="place" data-placeId="" onclick="sendForHelp(this);">Send for help</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
