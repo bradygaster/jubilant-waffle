@@ -48,13 +48,13 @@
                 return 'This location needs assistance. Click the <strong>Send for Help</strong> button below to get some help from a mobile user.';
                 break;
             case 'Requested':
-                return 'orange';
+                return 'This location <strong>still</strong> needs attention. It has been requested previously but no one has accepted it yet.';
                 break;
             case 'In Route':
-                return 'blue';
+                return 'Someone is on their way to this location.';
                 break;
             case 'Arrived':
-                return 'green';
+                return 'Someone has addressed this location already.';
                 break;
             default:
                 return 'black';
@@ -93,6 +93,8 @@
                             $('#sendHelpButton').hide();
                         else
                             $('#sendHelpButton').show();
+
+                        $('#locationDialog').html(getContentForStatus(args.target.metadata.status));
 
                         $('#mapClickedModal').modal('toggle');
                     });
