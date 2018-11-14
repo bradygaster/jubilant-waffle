@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>inprocess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App"/>
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0-preview3-35497" PrivateAssets="All" />
+  </ItemGroup>
+
+  <Target Name="CopyConfigOnBuild" AfterTargets="AfterBuild">
+    <Copy SourceFiles="appsettings.json" DestinationFolder="$(OutDir)" />
+  </Target>
+  <Target Name="CopyConfigOnPublish" AfterTargets="Publish">
+    <Copy SourceFiles="appsettings.json" DestinationFolder="$(PublishDir)" />
+  </Target>
+
+</Project>

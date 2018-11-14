@@ -3,9 +3,15 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
+    "compounds": [
+        { 
+            "name": "DispatchR All",
+            "configurations": ["DispatchR Web", "DispatchR API"]
+        }
+    ],
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "DispatchR API",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -36,10 +42,36 @@
             }
         },
         {
-            "name": ".NET Core Attach",
+            "name": "DispatchR Web",
             "type": "coreclr",
-            "request": "attach",
-            "processId": "${command:pickProcess}"
-        }
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/DispatchR.Web/bin/Debug/netcoreapp2.2/DispatchR.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/DispatchR.Web/bin/Debug/netcoreapp2.2",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        
     ]
 }

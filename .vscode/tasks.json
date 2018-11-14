@@ -3,6 +3,14 @@
     "tasks": [
         {
             "label": "build",
+            "dependsOn" : [
+                "build-api",
+                "build-web"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-api",
             "command": "dotnet",
             "type": "process",
             "args": [
@@ -11,16 +19,16 @@
             ],
             "problemMatcher": "$msCompile",
             "dependsOn" : [
-                "build-seed"
+                "build-data"
             ]
         },
         {
-            "label": "build-seed",
+            "label": "build-web",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/DispatchR.Data.Seed/DispatchR.Data.Seed.csproj"
+                "${workspaceFolder}/src/DispatchR.Web/DispatchR.Web.csproj"
             ],
             "problemMatcher": "$msCompile",
             "dependsOn" : [
@@ -36,6 +44,19 @@
                 "${workspaceFolder}/src/DispatchR.Data/DispatchR.Data.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-seed",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/DispatchR.Data.Seed/DispatchR.Data.Seed.csproj"
+            ],
+            "problemMatcher": "$msCompile",
+            "dependsOn" : [
+                "build-data"
+            ]
         }
     ]
 }
