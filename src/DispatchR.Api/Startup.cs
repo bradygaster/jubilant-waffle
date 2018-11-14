@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSwag.AspNetCore;
 using DispatchR.Data.Models;
+using DispatchR.Hubs;
 
 namespace DispatchR.Api
 {
@@ -30,6 +31,9 @@ namespace DispatchR.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwagger();
+            services.AddSignalR((options) => {
+                // no customization needed, yet
+            });
             services.AddCors((options) => {
                 // no customization needed, yet
             });
@@ -66,6 +70,9 @@ namespace DispatchR.Api
             //app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwaggerUi3WithApiExplorer();
+            app.UseSignalR((routes) => {
+                routes.MapHub<DispatchRHub>("/dispatchr");
+            });
         }
     }
 }

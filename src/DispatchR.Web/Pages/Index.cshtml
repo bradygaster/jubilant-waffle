@@ -8,8 +8,10 @@
 {
 <script src="https://www.bing.com/api/maps/mapcontrol?key=AnVnNDPLn18MnvZYlZX0-iRU1hqhDOaiAevBgxSr0nMnYE4mnSdSzkO_u8gxbmOD"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="@Html.Raw("https://cdn.jsdelivr.net/npm/@aspnet/signalr@1.0.4/dist/cjs/index.min.js")"></script>
 <script>
     var map;
+    const urlBase = 'http://localhost:5000';
 
     function loadMapScenario() {
         map = new Microsoft.Maps.Map(document.getElementById('map'), {});
@@ -63,7 +65,7 @@
 
     function getPoints() {
         axios
-            .get('http://localhost:5000/api/places')
+            .get(urlBase + '/api/places')
             .then(function (response) {
                 console.log(response.data);
                 for(i=0; i<response.data.length; i++) {
