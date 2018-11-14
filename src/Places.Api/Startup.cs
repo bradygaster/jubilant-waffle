@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSwag.AspNetCore;
+using Places.Data.Models;
 
 namespace Places.Api
 {
@@ -28,6 +30,14 @@ namespace Places.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwagger();
+
+            services.AddDbContext<PlacesContext>((options) => 
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("PlacesDatabase"),
+                    (sqlOptions) => { 
+                        sqlOptions.UseNetTopologySuite();
+                    });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
