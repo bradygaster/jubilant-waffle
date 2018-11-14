@@ -29,14 +29,16 @@ namespace DispatchR.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder
+                    .AllowCredentials()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("http://localhost:5000/", "http://localhost:4000/");
+            }));
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddSwagger();
-            services.AddSignalR((options) => {
-                // no customization needed, yet
-            });
-            services.AddCors((options) => {
-                // no customization needed, yet
-            });
 
             services.AddDbContext<PlacesContext>((options) =>
             {
@@ -46,17 +48,17 @@ namespace DispatchR.Api
                         sqlOptions.UseNetTopologySuite();
                     });
             });
+
+            services.AddSwagger();
+
+            services.AddSignalR((options) => {
+                // no customization needed, yet
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseCors((builder) => {
-                builder.AllowAnyHeader();
-                builder.AllowAnyMethod();
-                builder.AllowAnyOrigin();
-            });
-            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -68,11 +70,13 @@ namespace DispatchR.Api
             }
 
             //app.UseHttpsRedirection();
-            app.UseMvc();
-            app.UseSwaggerUi3WithApiExplorer();
-            app.UseSignalR((routes) => {
-                routes.MapHub<DispatchRHub>("/dispatchr");
-            });
+            app.UseCors("CorsPolicy")
+                .UseMvc()
+                .UseSwaggerUi3WithApiExplorer()
+                .UseSignalR((routes) => {
+                    routes.MapHub<DispatchRHub>("/dispatchr");
+                })
+                ;
         }
     }
 }

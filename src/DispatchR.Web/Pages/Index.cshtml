@@ -8,7 +8,7 @@
 {
 <script src="https://www.bing.com/api/maps/mapcontrol?key=AqapeevaeqxgZlYX8wfg-M9m4JdW7s3Qx42BqBcDY8n22hk7j1U4mSC5pYezdqym"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-<script src="@Html.Raw("https://cdn.jsdelivr.net/npm/@aspnet/signalr@1.0.4/dist/cjs/index.min.js")"></script>
+<script src="~/js/signalr.min.js"></script>
 <script>
     var map;
     const urlBase = 'http://localhost:3000';
@@ -112,6 +112,16 @@
     function sendForHelp(e) {
         console.log($(e).data('placeId'));
     }
+
+    var connection = new signalR.HubConnectionBuilder().withUrl(urlBase + "/dispatchr").build();
+
+    connection.on("missionAccepted", function () {
+        console.log("mission accepted");
+    });
+
+    connection.start().catch(function (err) {
+        return console.error(err.toString());
+    });
 </script>
 }
 
