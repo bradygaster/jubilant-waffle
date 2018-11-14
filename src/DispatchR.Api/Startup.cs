@@ -36,7 +36,7 @@ namespace DispatchR.Api
 
             services.AddDbContext<PlacesContext>((options) =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("PlacesDatabase"),
+                options.UseSqlServer(Configuration.GetConnectionString("DispatchRDatabase"),
                     (sqlOptions) =>
                     {
                         sqlOptions.UseNetTopologySuite();
