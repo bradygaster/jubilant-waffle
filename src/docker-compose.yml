@@ -10,3 +10,11 @@ services:
     environment:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: P@55w0rd
+  api:
+    build:
+      context: .
+      dockerfile: ./api.Dockerfile
+  web:
+    build:
+      context: .
+      dockerfile: ./web.Dockerfile
