@@ -31,10 +31,11 @@ namespace DispatchR.Api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwagger();
 
-            services.AddDbContext<PlacesContext>((options) => 
+            services.AddDbContext<PlacesContext>((options) =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("PlacesDatabase"),
-                    (sqlOptions) => { 
+                    (sqlOptions) =>
+                    {
                         sqlOptions.UseNetTopologySuite();
                     });
             });
