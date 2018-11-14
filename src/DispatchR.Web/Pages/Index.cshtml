@@ -10,15 +10,27 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
     var map;
+
     function loadMapScenario() {
         map = new Microsoft.Maps.Map(document.getElementById('map'), {});
+        map.setView({
+            center: new Microsoft.Maps.Location(47.645050, -122.130210),
+            zoom: 16
+        });
     }
 
     function getPoints() {
         axios
             .get('http://localhost:5000/api/places')
             .then(function (response) {
-                console.log(response);
+                console.log(response.data);
+                for(i=0; i<response.data.length; i++) {
+                    var pushpin = new Microsoft.Maps.Pushpin({
+                        latitude: response.data[i].latitude,
+                        longitude: response.data[i].longitude
+                    }, null);
+                    map.entities.push(pushpin);
+                }
             })
             .catch(function (error) {
                 console.log(error);
