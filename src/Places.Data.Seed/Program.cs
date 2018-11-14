@@ -29,10 +29,10 @@ namespace Seed
                 }
             }
 
-            using(var context = new PlacesContext())
-            {
-                context.SetupDatabase(places);
-            }
+            // using(var context = new PlacesContext())
+            // {
+            //     context.SetupDatabase(places);
+            // }
         }
     }
 }

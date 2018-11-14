@@ -12,9 +12,9 @@ namespace Places.Api.Controllers
     [ApiController]
     public class PlacesController : ControllerBase
     {
-        public PlacesController()
+        public PlacesController(PlacesContext placesContext)
         {
-            PlacesDataContext = new Places.Data.Models.PlacesContext();
+            PlacesDataContext = placesContext;
         }
 
         public PlacesContext PlacesDataContext { get; }
