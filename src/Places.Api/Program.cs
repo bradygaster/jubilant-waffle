@@ -19,6 +19,9 @@ namespace Places.Api
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration(builder => {
+                    builder.AddJsonFile("appsettings.json");
+                })
                 .UseStartup<Startup>();
     }
 }
