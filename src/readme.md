@@ -7,7 +7,12 @@
     ```sql
     CREATE DATABASE DispatchR
     ```
-    THis script will create the database and prepare it for being accessed by the Entity Framework components to preload the database with sample data.
+    This script will create the database and prepare it for being accessed by the Entity Framework components to preload the database with sample data.
+
+### Seed the database with sample geo-data
 1. F5 in VS Code to run the `DispatchR.API` **and** the `DispatchR.Web` project simultaneously.
 1. If you want to reset (or load-up for the first time) the sample data, hit the `/api/reset` URL to reload the database. 
+
+### See the data coming from the Web API.
 1. Go back to the DispatchR UI and click the Step 1 button to load up the initial state.
+1. Click on the push pins.
