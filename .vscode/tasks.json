@@ -5,7 +5,8 @@
             "label": "build",
             "dependsOn" : [
                 "build-api",
-                "build-web"
+                "build-web",
+                "build-mobile-web"
             ],
             "problemMatcher": "$msCompile"
         },
@@ -30,10 +31,17 @@
                 "build",
                 "${workspaceFolder}/src/DispatchR.Web/DispatchR.Web.csproj"
             ],
-            "problemMatcher": "$msCompile",
-            "dependsOn" : [
-                "build-data"
-            ]
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "build-mobile-web",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/src/DispatchR.Mobile.Web/DispatchR.Mobile.Web.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         },
         {
             "label": "build-data",

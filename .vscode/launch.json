@@ -6,7 +6,7 @@
     "compounds": [
         { 
             "name": "DispatchR All",
-            "configurations": ["DispatchR API", "DispatchR Web"]
+            "configurations": ["DispatchR API", "DispatchR Web", "DispatchR Mobile Web"]
         }
     ],
     "configurations": [
@@ -36,7 +36,7 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:5000/"
+                "ASPNETCORE_URLS": "http://localhost:3000/"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -68,7 +68,39 @@
             },
             "env": {
                 "ASPNETCORE_ENVIRONMENT": "Development",
-                "ASPNETCORE_URLS": "http://localhost:3000/"
+                "ASPNETCORE_URLS": "http://localhost:4000/"
+            },
+            "sourceFileMap": {
+                "/Views": "${workspaceFolder}/Views"
+            }
+        },
+        {
+            "name": "DispatchR Mobile Web",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/src/DispatchR.Mobile.Web/bin/Debug/netcoreapp2.2/DispatchR.Mobile.Web.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/src/DispatchR.Mobile.Web",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart",
+            "launchBrowser": {
+                "enabled": true,
+                "args": "${auto-detect-url}",
+                "windows": {
+                    "command": "cmd.exe",
+                    "args": "/C start ${auto-detect-url}"
+                },
+                "osx": {
+                    "command": "open"
+                },
+                "linux": {
+                    "command": "xdg-open"
+                }
+            },
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:5000/"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
