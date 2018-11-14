@@ -23,21 +23,14 @@ namespace DispatchR.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<PlaceViewModel>> Get()
         {
-            return PlacesDataContext.Places.ToArray().Select(x => 
-                new PlaceViewModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Latitude = x.Location.Y,
-                    Longitude = x.Location.X 
-                }).ToArray();
+            return PlacesDataContext.Places.ToArray().Select(x => x.CreateViewModel()).ToArray();
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<Place> Get(Guid id)
+        public ActionResult<PlaceViewModel> Get(Guid id)
         {
-            return PlacesDataContext.Places.First(x => x.Id == id);
+            return PlacesDataContext.Places.First(x => x.Id == id).CreateViewModel();
         }
     }
 }
