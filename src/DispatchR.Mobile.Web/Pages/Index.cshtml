@@ -7,3 +7,26 @@
 <div class="text-center">
     DispatchR Mobile Site
 </div>
+
+@section scripts
+{
+<script src="https://www.bing.com/api/maps/mapcontrol?key=AqapeevaeqxgZlYX8wfg-M9m4JdW7s3Qx42BqBcDY8n22hk7j1U4mSC5pYezdqym"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="@Html.Raw("https://cdn.jsdelivr.net/npm/@aspnet/signalr@1.0.4/dist/cjs/index.min.js")"></script>
+<script>
+    var map;
+    const urlBase = 'http://localhost:3000';
+
+    function loadMap() {
+        map = new Microsoft.Maps.Map(document.getElementById('map'), {});
+        map.setView({
+            center: new Microsoft.Maps.Location(47.645050, -122.130210),
+            zoom: 16
+        });
+        Microsoft.Maps.Events.addHandler(map, 'click', function (e) 
+        { 
+            console.log(e.location.latitude + ', ' + e.location.longitude);
+        });
+    }
+</script>
+}

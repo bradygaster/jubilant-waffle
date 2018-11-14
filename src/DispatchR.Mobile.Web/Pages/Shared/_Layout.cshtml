@@ -16,12 +16,10 @@
     </environment>
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body onload="loadMapScenario();">
+<body onload="loadMap();">
     
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+    <div class="container-fluid" id="map">
+        @RenderBody()
     </div>
 
     <footer class="border-top footer text-muted">
