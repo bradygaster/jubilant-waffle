@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using NetTopologySuite.Geometries;
 
-namespace Places.Data.Models
+namespace DispatchR.Data.Models
 {
     public class Place
     {

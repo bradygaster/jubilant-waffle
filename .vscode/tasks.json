@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/Places.Api/Places.Api.csproj"
+                "${workspaceFolder}/src/DispatchR.Api/DispatchR.Api.csproj"
             ],
             "problemMatcher": "$msCompile",
             "dependsOn" : [
@@ -20,7 +20,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/Places.Data.Seed/Places.Data.Seed.csproj"
+                "${workspaceFolder}/src/DispatchR.Data.Seed/DispatchR.Data.Seed.csproj"
             ],
             "problemMatcher": "$msCompile",
             "dependsOn" : [
@@ -33,7 +33,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/src/Places.Data/Places.Data.csproj"
+                "${workspaceFolder}/src/DispatchR.Data/DispatchR.Data.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

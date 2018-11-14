@@ -9,9 +9,9 @@
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            "program": "${workspaceFolder}/src/Places.Api/bin/Debug/netcoreapp2.2/Places.Api.dll",
+            "program": "${workspaceFolder}/src/DispatchR.Api/bin/Debug/netcoreapp2.2/DispatchR.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/Places.Api/bin/Debug/netcoreapp2.2",
+            "cwd": "${workspaceFolder}/src/DispatchR.Api/bin/Debug/netcoreapp2.2",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {

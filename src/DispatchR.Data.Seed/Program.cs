@@ -3,7 +3,7 @@ using System.IO;
 using GeoAPI.Geometries;
 using NetTopologySuite.Geometries;
 using Newtonsoft.Json.Linq;
-using Places.Data.Models;
+using DispatchR.Data.Models;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -15,7 +15,7 @@ namespace Seed
         {
             List<Place> places = new List<Place>();
 
-            using(FileStream fs = File.Open("src/Places.Data/Seed/places.json", FileMode.Open))
+            using(FileStream fs = File.Open("src/DispatchR.Data/Seed/DispatchR.json", FileMode.Open))
             {
                 foreach (var place in JToken.Parse(new StreamReader(fs).ReadToEnd()).ToObject<dynamic[]>())
                 {

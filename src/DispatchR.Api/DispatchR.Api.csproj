@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Places.Data\Places.Data.csproj" />
+    <ProjectReference Include="..\DispatchR.Data\DispatchR.Data.csproj" />
   </ItemGroup>
 
   <Target Name="CopyConfigOnBuild" AfterTargets="AfterBuild">

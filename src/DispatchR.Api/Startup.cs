@@ -12,9 +12,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSwag.AspNetCore;
-using Places.Data.Models;
+using DispatchR.Data.Models;
 
-namespace Places.Api
+namespace DispatchR.Api
 {
     public class Startup
     {

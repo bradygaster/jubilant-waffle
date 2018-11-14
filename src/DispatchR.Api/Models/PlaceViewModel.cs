@@ -1,6 +1,6 @@
 using System;
 
-namespace Places.Api.Models 
+namespace DispatchR.Api.Models 
 {
     public class PlaceViewModel
     {

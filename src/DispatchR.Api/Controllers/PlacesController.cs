@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Places.Data.Models;
-using Places.Api.Models;
+using DispatchR.Data.Models;
+using DispatchR.Api.Models;
 
-namespace Places.Api.Controllers
+namespace DispatchR.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
