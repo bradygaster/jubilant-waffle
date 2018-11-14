@@ -54,7 +54,7 @@ namespace DispatchR.Api
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwaggerUi3WithApiExplorer();
         }

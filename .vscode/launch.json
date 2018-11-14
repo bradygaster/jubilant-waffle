@@ -17,7 +17,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/src/DispatchR.Api/bin/Debug/netcoreapp2.2/DispatchR.Api.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/DispatchR.Api/bin/Debug/netcoreapp2.2",
+            "cwd": "${workspaceFolder}/src/DispatchR.Api",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
@@ -35,7 +35,8 @@
                 }
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:5000/"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
@@ -48,7 +49,7 @@
             "preLaunchTask": "build",
             "program": "${workspaceFolder}/src/DispatchR.Web/bin/Debug/netcoreapp2.2/DispatchR.Web.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/src/DispatchR.Web/bin/Debug/netcoreapp2.2",
+            "cwd": "${workspaceFolder}/src/DispatchR.Web",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart",
             "launchBrowser": {
@@ -66,12 +67,12 @@
                 }
             },
             "env": {
-                "ASPNETCORE_ENVIRONMENT": "Development"
+                "ASPNETCORE_ENVIRONMENT": "Development",
+                "ASPNETCORE_URLS": "http://localhost:3000/"
             },
             "sourceFileMap": {
                 "/Views": "${workspaceFolder}/Views"
             }
-        },
-        
+        }
     ]
 }
