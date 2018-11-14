@@ -6,7 +6,7 @@
     "compounds": [
         { 
             "name": "DispatchR All",
-            "configurations": ["DispatchR Web", "DispatchR API"]
+            "configurations": ["DispatchR API", "DispatchR Web"]
         }
     ],
     "configurations": [

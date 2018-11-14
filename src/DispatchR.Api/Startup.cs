@@ -30,6 +30,9 @@ namespace DispatchR.Api
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddSwagger();
+            services.AddCors((options) => {
+                // no customization needed, yet
+            });
 
             services.AddDbContext<PlacesContext>((options) =>
             {
@@ -44,6 +47,12 @@ namespace DispatchR.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseCors((builder) => {
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+                builder.AllowAnyOrigin();
+            });
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
