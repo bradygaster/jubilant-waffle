@@ -28,11 +28,6 @@ namespace Seed
                     });
                 }
             }
-
-            // using(var context = new PlacesContext())
-            // {
-            //     context.SetupDatabase(places);
-            // }
         }
     }
 }

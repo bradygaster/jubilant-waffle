@@ -1,9 +1,9 @@
 ﻿/* dispatchr classes */
 #map {
   height: 500px;
-  width: 900px;
   display: inline-block;
   border: solid 1px #000;
+  margin-bottom: 10px;
 }
 /* /dispatchr classes */
 

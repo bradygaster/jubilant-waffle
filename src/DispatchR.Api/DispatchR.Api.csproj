@@ -22,9 +22,11 @@
 
   <Target Name="CopyConfigOnBuild" AfterTargets="AfterBuild">
     <Copy SourceFiles="appsettings.json" DestinationFolder="$(OutDir)" />
+    <Copy SourceFiles="places.json" DestinationFolder="$(OutDir)" />
   </Target>
   <Target Name="CopyConfigOnPublish" AfterTargets="Publish">
     <Copy SourceFiles="appsettings.json" DestinationFolder="$(PublishDir)" />
+    <Copy SourceFiles="places.json" DestinationFolder="$(OutDir)" />
   </Target>
 
 </Project>

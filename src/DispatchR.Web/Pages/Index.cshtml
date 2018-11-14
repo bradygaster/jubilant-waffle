@@ -17,6 +17,10 @@
             center: new Microsoft.Maps.Location(47.645050, -122.130210),
             zoom: 16
         });
+        Microsoft.Maps.Events.addHandler(map, 'click', function (e) 
+        { 
+            console.log(e.location.latitude + ', ' + e.location.longitude);
+        });
     }
 
     function getPoints() {
@@ -28,7 +32,19 @@
                     var pushpin = new Microsoft.Maps.Pushpin({
                         latitude: response.data[i].latitude,
                         longitude: response.data[i].longitude
-                    }, null);
+                    }, { color: 'red'});
+
+                    pushpin.metadata = {
+                        title: response.data[i].name
+                    };
+
+                    Microsoft.Maps.Events.addHandler(pushpin, 'click', function (args) 
+                    {
+                        console.log(args.target);
+                        $('#exampleModalLabel').text(args.target.metadata.title);
+                        $('#mapClickedModal').modal('toggle');
+                    });
+
                     map.entities.push(pushpin);
                 }
             })
@@ -42,13 +58,32 @@
 <div class="text-center">
     <h1 class="display-4">DispatchR</h1>
     <div class="row">
-        <div class="col">
-            <div id="map"></div>
-        </div>
+        <div id="map" class="col-12"></div>
     </div>
     <div class="row">
-        <div class="col">
-            <button type="button" class="btn btn-success" onclick="getPoints();">Get Points</button>
+        <div class="col-1">
+            <button type="button" class="btn btn-success" onclick="getPoints();">Step 1: Get Points</button>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="mapClickedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
 </div>
