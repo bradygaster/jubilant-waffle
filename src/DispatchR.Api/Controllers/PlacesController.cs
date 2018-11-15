@@ -5,32 +5,39 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using DispatchR.Data.Models;
 using DispatchR.Api.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http;
 
 namespace DispatchR.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class PlacesController : ControllerBase
     {
+        private PlacesContext _context;
+
         public PlacesController(PlacesContext placesContext)
         {
-            PlacesDataContext = placesContext;
+            _context = placesContext;
         }
 
-        public PlacesContext PlacesDataContext { get; }
-
-        // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<PlaceViewModel>> Get()
+        public async Task<ActionResult<IEnumerable<PlaceViewModel>>> Get()
         {
-            return PlacesDataContext.Places.ToArray().Select(x => x.CreateViewModel()).ToArray();
+            return await _context.Places.Select(x => x.CreateViewModel()).ToArrayAsync();
         }
 
-        // GET api/values/5
         [HttpGet("{id}")]
-        public ActionResult<PlaceViewModel> Get(Guid id)
+        public async Task<ActionResult<PlaceViewModel>> Get(Guid id)
         {
-            return PlacesDataContext.Places.First(x => x.Id == id).CreateViewModel();
+            var place = await _context.Places.FindAsync(id);
+
+            if (place == null)
+            {
+                return NotFound();
+            }
+
+            return place.CreateViewModel();
         }
     }
 }

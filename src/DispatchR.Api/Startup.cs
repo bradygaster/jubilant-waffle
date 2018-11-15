@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using NSwag.AspNetCore;
 using DispatchR.Data.Models;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace DispatchR.Api
 {
@@ -29,10 +30,8 @@ namespace DispatchR.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
             services.AddSwagger();
-            services.AddCors((options) => {
-                // no customization needed, yet
-            });
 
             services.AddDbContext<PlacesContext>((options) =>
             {
@@ -42,28 +41,16 @@ namespace DispatchR.Api
                         sqlOptions.UseNetTopologySuite();
                     });
             });
+
+            services.AddHealthChecks()
+                    .AddDbContextCheck<PlacesContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseCors((builder) => {
-                builder.AllowAnyHeader();
-                builder.AllowAnyMethod();
-                builder.AllowAnyOrigin();
-            });
+            app.UseHealthChecks("/ready");
             
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
-            //app.UseHttpsRedirection();
             app.UseMvc();
             app.UseSwaggerUi3WithApiExplorer();
         }

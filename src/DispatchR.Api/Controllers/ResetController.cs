@@ -11,7 +11,7 @@ using NetTopologySuite.Geometries;
 
 namespace DispatchR.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class ResetController : ControllerBase
     {

@@ -5,11 +5,16 @@ VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{E5D15696-9D25-4BFA-9833-32E2C28F07CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchR.Api", "src\DispatchR.Api\DispatchR.Api.csproj", "{ED2C3D3C-6C7D-4EC3-AD66-1FD309F90CF6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DispatchR.Api", "src\DispatchR.Api\DispatchR.Api.csproj", "{ED2C3D3C-6C7D-4EC3-AD66-1FD309F90CF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchR.Data", "src\DispatchR.Data\DispatchR.Data.csproj", "{8E811016-560B-41F8-8BDE-D637B68D9DB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DispatchR.Data", "src\DispatchR.Data\DispatchR.Data.csproj", "{8E811016-560B-41F8-8BDE-D637B68D9DB1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DispatchR.Web", "src\DispatchR.Web\DispatchR.Web.csproj", "{4EC23386-E678-4207-ABA0-5F42737330A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DispatchR.Web", "src\DispatchR.Web\DispatchR.Web.csproj", "{4EC23386-E678-4207-ABA0-5F42737330A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{142F9378-C18F-4987-AC41-0BA0D6ACC39E}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\api.yaml = k8s\api.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,9 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 		Release|x64 = Release|x64
 		Release|x86 = Release|x86
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{ED2C3D3C-6C7D-4EC3-AD66-1FD309F90CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -61,9 +63,15 @@ Global
 		{4EC23386-E678-4207-ABA0-5F42737330A8}.Release|x86.ActiveCfg = Release|Any CPU
 		{4EC23386-E678-4207-ABA0-5F42737330A8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{ED2C3D3C-6C7D-4EC3-AD66-1FD309F90CF6} = {E5D15696-9D25-4BFA-9833-32E2C28F07CB}
 		{8E811016-560B-41F8-8BDE-D637B68D9DB1} = {E5D15696-9D25-4BFA-9833-32E2C28F07CB}
 		{4EC23386-E678-4207-ABA0-5F42737330A8} = {E5D15696-9D25-4BFA-9833-32E2C28F07CB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0A693F41-DE1F-41B9-A097-22E52E42B7AB}
 	EndGlobalSection
 EndGlobal
