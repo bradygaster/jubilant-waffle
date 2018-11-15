@@ -34,8 +34,8 @@ namespace DispatchR.Api
                 builder
                     .AllowCredentials()
                     .AllowAnyMethod()
-                    .AllowAnyHeader()
-                    .WithOrigins("http://localhost:5000/", "http://localhost:4000/");
+                    .WithHeaders("X-Requested-With")
+                    .WithOrigins("http://localhost:5000", "http://localhost:4000");
             }));
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
