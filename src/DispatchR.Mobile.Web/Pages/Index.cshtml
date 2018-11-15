@@ -30,20 +30,13 @@
 
     var connection = new signalR.HubConnectionBuilder().withUrl(urlBase + "/dispatchr").build();
 
-    connection.on("assistanceRequested", function (location) {
-        console.log(location);
+    connection.on("assistanceRequested", function (place) {
+        console.log(place);
     });
 
     connection.start().catch(function (err) {
+        console.log(err);
         return console.error(err.toString());
     });
-
-    function acceptMission(event) {
-        connection
-            .invoke("missionAccepted", user, message)
-            .catch(function (err) {
-                return console.error(err.toString());
-            });
-    }
 </script>
 }

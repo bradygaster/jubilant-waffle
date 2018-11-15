@@ -110,14 +110,15 @@
     }
 
     function sendForHelp(e) {
-        console.log($(e).data('placeId'));
+        console.log("requesting help at: " + $(e).data('placeId'));
+        connection
+            .invoke("RequestAssistance", $(e).data('placeId'))
+            .catch(function (err) {
+                return console.error(err.toString());
+            });
     }
 
     var connection = new signalR.HubConnectionBuilder().withUrl(urlBase + "/dispatchr").build();
-
-    connection.on("missionAccepted", function () {
-        console.log("mission accepted");
-    });
 
     connection.start().catch(function (err) {
         return console.error(err.toString());
