@@ -14,6 +14,7 @@ using Microsoft.Extensions.Options;
 using NSwag.AspNetCore;
 using DispatchR.Data.Models;
 using DispatchR.Hubs;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 namespace DispatchR.Api
 {
@@ -29,16 +30,9 @@ namespace DispatchR.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
-            {
-                builder
-                    .AllowCredentials()
-                    .AllowAnyMethod()
-                    .WithHeaders("X-Requested-With")
-                    .WithOrigins("http://localhost:5000", "http://localhost:4000");
-            }));
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddSwagger();
 
             services.AddDbContext<PlacesContext>((options) =>
             {
@@ -49,7 +43,8 @@ namespace DispatchR.Api
                     });
             });
 
-            services.AddSwagger();
+            services.AddHealthChecks()
+                    .AddDbContextCheck<PlacesContext>();
 
             services.AddSignalR((options) => {
                 // no customization needed, yet
@@ -59,24 +54,14 @@ namespace DispatchR.Api
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
-            else
-            {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-                app.UseHsts();
-            }
-
-            //app.UseHttpsRedirection();
-            app.UseCors("CorsPolicy")
-                .UseMvc()
-                .UseSwaggerUi3WithApiExplorer()
-                .UseSignalR((routes) => {
-                    routes.MapHub<DispatchRHub>("/dispatchr");
-                })
-                ;
+            app.UseHealthChecks("/ready");
+            
+            app.UseMvc();
+            app.UseSwaggerUi3WithApiExplorer();
+            
+            app.UseSignalR((routes) => {
+                routes.MapHub<DispatchRHub>("/dispatchr");
+            });
         }
     }
 }
