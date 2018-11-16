@@ -1,0 +1,42 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "DispatchR Mobile";
+}
+
+<div class="container-fluid" id="map">
+</div>
+
+@section scripts
+{
+<script src="https://www.bing.com/api/maps/mapcontrol?key=AqapeevaeqxgZlYX8wfg-M9m4JdW7s3Qx42BqBcDY8n22hk7j1U4mSC5pYezdqym"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="~/js/signalr.min.js"></script>
+<script>
+    var map;
+    const urlBase = 'http://localhost:3000';
+
+    function loadMap() {
+        map = new Microsoft.Maps.Map(document.getElementById('map'), {});
+        map.setView({
+            center: new Microsoft.Maps.Location(47.645050, -122.130210),
+            zoom: 16
+        });
+        Microsoft.Maps.Events.addHandler(map, 'click', function (e) 
+        { 
+            console.log(e.location.latitude + ', ' + e.location.longitude);
+        });
+    }
+
+    var connection = new signalR.HubConnectionBuilder().withUrl(urlBase + "/dispatchr").build();
+
+    connection.on("assistanceRequested", function (place) {
+        console.log(place);
+    });
+
+    connection.start().catch(function (err) {
+        console.log(err);
+        return console.error(err.toString());
+    });
+</script>
+}
