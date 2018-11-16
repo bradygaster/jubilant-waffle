@@ -13,5 +13,6 @@ namespace DispatchR.Data.Models
         public Guid Id { get; set; }
         public string Name { get; set; }
         public Point Location { get; set; }
+        public string Status { get; set; }
     }
 }
