@@ -1,0 +1,43 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: taskapi-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: taskapi
+    spec:
+      containers:
+      - name: taskapi
+        image: glennc/taskapi
+        ports:
+        - containerPort: 1433
+        readinessProbe:
+          httpGet:
+            path: /ready
+            port: 80
+        env:
+        - name: TasksConnectionString
+          value: ""
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: taskapi-deployment
+spec:
+  selector:
+    app: taskapi
+  ports:
+    - protocol: TCP
+      port: 1433
+      targetPort: 1433
+  type: LoadBalancer
